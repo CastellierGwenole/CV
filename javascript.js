@@ -23,9 +23,9 @@ if(window.DeviceMotionEvent) {
   }
 
   function process(event) {
-    var x = event.accelerationIncludingGravity.x;
-    var y = event.accelerationIncludingGravity.y;
-    var z = event.accelerationIncludingGravity.z;
+    var x = Math.round(100*event.accelerationIncludingGravity.x)/100;
+    var y = Math.round(100*event.accelerationIncludingGravity.y)/100;
+    var z = Math.round(100*event.accelerationIncludingGravity.z)/100;
 document.getElementById("test").innerHTML = "x :"+ x + "y :" + y + "z :" + z;
     
   }

@@ -1,5 +1,4 @@
-var prenom = "toto";
-document.getElementById("test").innerHTML = prenom;
+navigator.getUserMedia(constraints, successCallback, errorCallback);
 
 function test() {
     document.addEventListener("keydown", keyDownHandler, false);
@@ -26,6 +25,8 @@ if(window.DeviceMotionEvent) {
     var x = Math.round(100*event.accelerationIncludingGravity.x)/100;
     var y = Math.round(100*event.accelerationIncludingGravity.y)/100;
     var z = Math.round(100*event.accelerationIncludingGravity.z)/100;
-document.getElementById("test").innerHTML = "x :"+ x + "y :" + y + "z :" + z;
+document.getElementById("x").innerHTML = "x :"+ x;
+document.getElementById("y").innerHTML = "y :"+ y;
+document.getElementById("z").innerHTML = "z :"+ z;
     
   }

@@ -1,6 +1,15 @@
-document.getElementById("x").innerHTML = "x :";
-document.getElementById("y").innerHTML = "y :";
-document.getElementById("z").innerHTML = "z :";
+var video = document.querySelector("#videoElement");
+ 
+if (navigator.mediaDevices.getUserMedia) {       
+    navigator.mediaDevices.getUserMedia({video: true})
+  .then(function(stream) {
+    video.srcObject = stream;
+  })
+  .catch(function(err0r) {
+    console.log("Something went wrong!");
+  });
+}
+
 function test() {
   document.addEventListener("keydown", keyDownHandler, false);
   document.addEventListener("keyup", keyUpHandler, false);

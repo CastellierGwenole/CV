@@ -1,7 +1,7 @@
 import firebaseConfig from "./utils/firebaseConfig";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, get, onValue, push, serverTimestamp, off } from "firebase/database";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getAuth, signInAnonymously } from "firebase/auth";
 import './chat.css';
 
@@ -17,6 +17,7 @@ const Chat = () => {
     const [userInfo, setUserInfo] = useState({});
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
+    const messageEndRef = useRef(null);
 
     const signInAutomaticaly = async (username) => {
         try {
@@ -40,9 +41,18 @@ const Chat = () => {
     useEffect(() => {
         onValue(ref(db, `messages/${userInfo?.uid}`), (snapshot) => {
             setMessages(Object.values(snapshot.val() || []))
+
         });
 
     }, [userInfo]);
+
+    useEffect(() => {
+        if (messageEndRef.current) {
+            messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [messages]);
+
+
 
 
     const validateInput = async () => {
@@ -71,17 +81,18 @@ const Chat = () => {
 
         <div className="chat-container">
             <div className="chat-header">
-                <h2>Messagerie direct</h2>
+                <h2>Envoyez-moi un message</h2>
             </div>
-            <div className="chat-messages">
+            <div className="chat-messages" >
                 {messages.map((m) => (
                     <div
                         key={m.timestamp}
-                        className={`message ${message.author === userInfo.uid ? 'user-message' : 'other-message'}`}
+                        className={`message ${m.author === userInfo.uid ? 'user-message' : 'other-message'}`}
                     >
                         {m.text}
                     </div>
                 ))}
+                <div ref={messageEndRef} />
             </div>
             <div className="chat-input">
                 <input

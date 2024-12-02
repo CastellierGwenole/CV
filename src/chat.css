@@ -2,23 +2,32 @@
 .chat-container {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    max-width: 100%;
+    max-width: 400px;
     height: 500px;
     background-color: #f0f0f0;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     font-family: Arial, sans-serif;
-    margin: 20px auto;
+
+    @media (max-width: 768px) {
+        width: auto;
+
+        @media (max-width: 768px) {
+            margin-right: -30px;
+            margin-bottom: -30px;
+        }
+    }
 }
 
 /* Header */
 .chat-header {
-    background-color: #0084ff;
+    background-color: #006599;
     color: white;
     padding: 10px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 /* Messages container */
@@ -33,17 +42,32 @@
 
 /* Each message */
 .message {
-    max-width: 75%;
-    padding: 10px;
+    background-color: #e4e4e4;
     border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    max-width: 75%;
     word-wrap: break-word;
-    display: inline-block;
+}
+
+.text {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* L'heure en bas de la bulle */
+.time {
+    font-size: 11px;
+    position: absolute;
+    bottom: -5px;
+    right: 10px;
+    color: #999;
 }
 
 /* User's message */
 .user-message {
     align-self: flex-end;
-    background-color: #0084ff;
+    background-color: #006599;
     color: white;
     border-bottom-right-radius: 0;
 }
@@ -62,6 +86,7 @@
     padding: 10px;
     background-color: white;
     border-top: 1px solid #ddd;
+
 }
 
 .chat-input input {
@@ -74,16 +99,54 @@
     outline: none;
 }
 
-.chat-input button {
-    padding: 10px;
-    background-color: #0084ff;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 16px;
+
+
+
+.headerChat {
+    font-weight: 600;
+    font-size: 20px;
 }
 
-.chat-input button:hover {
-    background-color: #006bb3;
+.bell {
+    animation: swing 10s ease-in-out infinite;
+    /* L'animation se répète à l'infini */
+    transform-origin: center;
+    /* Définir le point de pivot de l'animation */
+}
+
+@keyframes swing {
+    0% {
+        transform: rotate(0deg);
+        /* Position initiale */
+    }
+
+    1% {
+        transform: rotate(-15deg);
+        /* Inclinaison vers la gauche */
+    }
+
+    2% {
+        transform: rotate(15deg);
+        /* Inclinaison vers la droite */
+    }
+
+    3% {
+        transform: rotate(-10deg);
+        /* Retour vers la gauche */
+    }
+
+    4% {
+        transform: rotate(10deg);
+        /* Retour vers la droite */
+    }
+
+    5% {
+        transform: rotate(0deg);
+        /* Revenir à la position initiale */
+    }
+
+    100% {
+        transform: rotate(0deg);
+        /* Revenir à la position initiale */
+    }
 }

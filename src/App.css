@@ -32,7 +32,199 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+*:focus {
+  outline: none !important;
+}
+
+.FlexBox {
+  flex-direction: column;
+  display: flex;
+  margin-top: 30px;
+}
+
+.header {
+  height: 200px;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  flex-direction: column;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+    padding-bottom: 10px;
+    height: auto;
+
+    .subName {
+      font-size: 0.75em;
+    }
+  }
+
+}
+
+.name {
+  font-weight: 700;
+  font-size: 70px;
+  text-transform: uppercase;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    font-size: 1.8em;
+    line-height: 0.95em;
+  }
+}
+
+.subName {
+  margin-left: 5px;
+  width: 100%;
+  color: grey;
+}
+
+.cadre {
+  display: flex;
+  flex-wrap: wrap;
+  border: solid 1px grey;
+}
+
+.item-cadre {
+  margin: 40px;
+  height: auto;
+  max-height: 70px;
+  flex: 1 1 calc(50% - 80px);
+  color: grey;
+  cursor: pointer;
+
+  transition: color 0.6s ease;
+}
+
+.html5Item:hover {
+  color: #ff5733;
+}
+
+.css3Item:hover {
+  color: #264de4;
+}
+
+.jsItem:hover {
+  color: #EFD81D;
+}
+
+.tsItem:hover {
+  color: #2F74C0;
+}
+
+.reactItem:hover {
+  color: #5ED5F6;
+}
+
+.vuejsItem:hover {
+  color: #3FB27F;
+}
+
+.nodeItem:hover {
+  color: #3A8338;
+}
+
+a {
+  font-weight: 400;
+  color: #181a1d
+}
+
+.left-text {
+  text-align: left;
+  /* line-height: normal; */
+}
+
+.entrepriseName {
+  color: grey;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.line {
+  border-top: solid 1px grey;
+}
+
+.chat {
+  position: fixed;
+  z-index: 1;
+  bottom: 30px;
+  right: 30px;
+
+}
+
+.competence-section {
+  margin-top: -80px;
+
+
+
+  @media (max-width: 992px) {
+    margin-top: 0px;
+  }
+
+
+}
+
+.justify-between {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.since {
+  font-weight: 400;
+}
+
+.aboutMe {
+  display: flex;
+  flex-direction: column;
+}
+
+.textContainer {
+  display: block;
+  flex-grow: 1;
+}
+
+.textFlexContainer {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.appBar {
+  @media (min-width: 768px) {
+    display: none !important;
+  }
+
+  background-color: #006599 !important;
+}
+
+.container {
+  @media (max-width: 768px) {
+    height: calc(100vh - 56px);
+    margin-top: 56px;
+    overflow: auto
+  }
+}
+
+.drawer {
+  .MuiPaper-root {
+    background-color: #006599;
+    padding-top: 60px;
+
+    .MuiButton-root {
+      color: white
+    }
   }
 }

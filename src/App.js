@@ -1,4 +1,4 @@
-import photoProfil from './img/photoprofil.jpg';
+import photoProfil from './img/photoprofil.png';
 import './App.css';
 import Chat from './chat.js';
 import React, { useState, useRef } from 'react';

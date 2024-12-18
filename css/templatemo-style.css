@@ -290,7 +290,7 @@ textarea:-ms-input-placeholder {
 
 	.tm-section {
 		padding-top: 60px;
-		height: 100vh;
+		min-height: 100vh;
 	}
 
 	.tm-content-div {

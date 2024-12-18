@@ -236,6 +236,13 @@ textarea:-ms-input-placeholder {
 	}
 }
 
+.tm-right-column {
+	@media (max-width: 768px) {
+		margin-top: 56px;
+	}
+}
+
+
 @media (min-width: 768px) {
 	.tm-about-img-container {
 		margin-top: 0;
@@ -268,6 +275,10 @@ textarea:-ms-input-placeholder {
 		width: 82%;
 		max-width: 82%;
 		min-width: 82%;
+
+		@media (max-width: 768px) {
+			margin-top: 56px;
+		}
 	}
 
 	.tm-nav-item {

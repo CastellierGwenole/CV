@@ -1,1 +1,413 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"/><link rel="icon" href="/CV/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/CV/logo192.png"/><link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"><link rel="stylesheet" href="/CV/css/bootstrap.min.css"><link rel="stylesheet" href="/CV/css/magnific-popup.css"><link rel="stylesheet" href="/CV/css/templatemo-style.css"><link rel="manifest" href="/CV/manifest.json"/><title>CV - Gwenolé Castellier</title><script defer="defer" src="/CV/static/js/main.ed8c34bf.js"></script><link href="/CV/static/css/main.e201dea2.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gwenolé Castellier — Reconversion Immobilier</title>
+  <meta name="description" content="Reconversion vers le métier de conseiller immobilier" />
+
+  <style>
+    :root{
+      --navy: #232635;
+      --navy-2:#2b2f41;
+      --ink:  #1b1f2a;
+      --muted:#6b7280;
+      --paper:#f6f7fb;
+      --card: #ffffff;
+      --line: rgba(0,0,0,.08);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background: linear-gradient(180deg, var(--paper), #ffffff);
+      overflow: hidden; 
+    }
+
+
+    .wrap{
+      height: 100dvh;          
+      display:grid;
+      grid-template-columns: 340px 1fr;
+      gap: 0;
+    }
+
+
+    aside{
+      background: linear-gradient(180deg, var(--navy), var(--navy-2));
+      color:#fff;
+      padding:22px 22px;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+    }
+
+    aside::before{
+      content:"";
+      position:absolute; inset:-140px -140px auto auto;
+      width:340px; height:340px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      transform: rotate(12deg);
+      pointer-events:none;
+    }
+    aside::after{
+      content:"";
+      position:absolute; inset:auto -150px -160px auto;
+      width:420px; height:420px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:999px;
+      transform: rotate(-10deg);
+      pointer-events:none;
+    }
+
+    .avatar{
+      width:160px; height:160px;
+      border-radius:999px;
+      border: 5px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+      overflow:hidden;
+      margin: 4px 0 14px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.22);
+      flex: 0 0 auto;
+    }
+    .avatar img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .name{
+      font-size: 24px;
+      font-weight: 760;
+      letter-spacing: .2px;
+      margin: 0 0 6px;
+    }
+    .subtitle{
+      margin: 0 0 12px;
+      font-size: 14px;
+      color: rgba(255,255,255,.80);
+      line-height:1.35;
+      max-width: 32ch;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin: 0 0 12px;
+      position:relative;
+      z-index:1;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:#fff;
+      font-size: 12px;
+      line-height:1;
+      backdrop-filter: blur(6px);
+      white-space:nowrap;
+    }
+
+    .aside-block{
+      margin-top: 10px;
+      padding-top: 12px;
+      border-top:1px solid rgba(255,255,255,.14);
+      position:relative;
+      z-index:1;
+    }
+    .aside-title{
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.70);
+      margin: 0 0 10px;
+    }
+
+    .aside-link{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      color: rgba(255,255,255,.92);
+      text-decoration:none;
+      padding:9px 10px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      margin-bottom:8px;
+    }
+    .aside-link:hover{ background: rgba(255,255,255,.09); }
+    .mono{ font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+
+    .small{
+      color: rgba(255,255,255,.74);
+      font-size: 12px;
+      line-height: 1.45;
+      margin: 10px 0 0;
+    }
+
+    main{
+      padding: 22px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow: hidden; 
+    }
+
+    .card{
+      width:min(940px, 100%);
+      max-height: calc(100dvh - 44px); 
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(16,24,40,.06);
+      overflow: hidden;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .content{
+      padding: 22px 24px 18px;
+      overflow: auto;
+    }
+
+    h1{
+      font-size: 24px;
+      margin: 0 0 8px;
+      letter-spacing:.2px;
+    }
+    .lead{
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height:1.55;
+      font-size: 15px;
+      max-width: 72ch;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:14px;
+    }
+
+    .panel{
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding:14px 14px 12px;
+      background: linear-gradient(180deg, #fff, #fbfbfd);
+    }
+    .panel h2{
+      margin:0 0 8px;
+      font-size: 12px;
+      letter-spacing:.12em;
+      text-transform: uppercase;
+      color: #3b4253;
+    }
+    ul{
+      margin:0;
+      padding-left: 18px;
+      color: #2e3342;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+    li{ margin: 6px 0; }
+    .cta{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: #fff;
+      text-decoration:none;
+      color: var(--ink);
+      font-weight: 650;
+    }
+    .btn:hover{ background:#f5f6fa; }
+    .btn.primary{
+      background: var(--navy);
+      color:#fff;
+      border-color: rgba(0,0,0,.10);
+    }
+    .btn.primary:hover{ filter: brightness(1.05); }
+    .small2{
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.5;
+      margin-top:10px;
+    }
+
+    @media (max-width: 980px){
+      body{ overflow: auto; }
+
+      .wrap{
+        height: auto;
+        min-height: 100dvh;
+        grid-template-columns: 1fr;
+      }
+
+      aside{
+        padding: 18px 16px;
+      }
+
+      .avatar{
+        width: 92px; height: 92px;
+        margin: 0 0 10px;
+      }
+      .name{ font-size: 20px; }
+      .subtitle{ font-size: 13px; margin-bottom: 10px; }
+
+      .aside-block{
+        margin-top: 10px;
+        padding-top: 10px;
+      }
+
+      main{
+        padding: 14px;
+        overflow: visible;
+      }
+
+      .card{
+        max-height: none;
+      }
+      .content{
+        overflow: visible;
+        padding: 18px 16px 16px;
+      }
+
+      .grid{
+        grid-template-columns: 1fr;
+        gap:12px;
+      }
+
+      h1{ font-size: 22px; }
+      .lead{ font-size: 14.5px; }
+      ul{ font-size: 13.8px; }
+    }
+
+    /* Très petits écrans */
+    @media (max-width: 420px){
+      .aside-link{ padding: 8px 9px; }
+      .chip{ padding: 7px 9px; font-size: 11.5px; }
+      h1{ font-size: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <aside>
+      <div class="avatar" aria-label="Photo de profil">
+        <img src="/CV/img/profile.jpg" alt="Photo de Gwenolé Castellier"
+             onerror="this.style.display='none'; this.parentElement.style.background='rgba(255,255,255,.10)';" />
+      </div>
+
+      <p class="name">Gwenolé Castellier</p>
+      <p class="subtitle">
+        Reconversion vers le métier de <strong>conseiller immobilier</strong>
+      </p>
+
+      <div class="chips">
+        <span class="chip">Disponibilité immédiate</span>
+        <span class="chip">Permis B</span>
+        <span class="chip">Ouvert à la formation</span>
+      </div>
+
+      <div class="aside-block">
+        <p class="aside-title">Contact</p>
+
+        <a class="aside-link" href="mailto:castellier.gwenole@gmail.com">
+          <span>✉️</span>
+          <span class="mono">castellier.gwenole@gmail.com</span>
+        </a>
+
+        <a class="aside-link" href="tel:+33770265970">
+          <span>📞</span>
+          <span class="mono">07 70 26 59 70</span>
+        </a>
+
+        <a class="aside-link" href="https://www.linkedin.com/in/gwenole-castellier/" target="_blank" rel="noreferrer">
+          <span>in</span>
+          <span>Profil LinkedIn</span>
+        </a>
+
+        <p class="small">
+          40 Rue des Étangs, 35220 Châteaubourg<br/>
+          Mobile sur un rayon de 15–20 km
+        </p>
+      </div>
+    </aside>
+
+    <main>
+      <article class="card">
+        <div class="content">
+          <h1>Reconversion vers l’immobilier</h1>
+          <p class="lead">
+            Après une expérience en développement web, j’ai choisi de m’orienter vers un métier plus
+            <strong>terrain</strong> et <strong>relationnel</strong> : l’accompagnement des vendeurs et acquéreurs en transaction.
+            Je recherche un poste de <strong>conseiller immobilier salarié</strong> sur le secteur de Châteaubourg et alentours.
+          </p>
+
+          <div class="grid">
+            <section class="panel">
+              <h2>Ce que j’apporte</h2>
+              <ul>
+                <li>Expérience concrète sur des projets immobiliers personnels : rénovation, division, mise en location.</li>
+                <li>Rigueur, organisation et autonomie (gestion de projets, méthodes, suivi).</li>
+                <li>Relation client : écoute, pédagogie, communication orale.</li>
+                <li>À l’aise avec les outils numériques (annonces, suivi, logiciels, 3D).</li>
+              </ul>
+              <p class="small2">
+                Objectif : intégrer une agence locale, apprendre vos méthodes, et construire une collaboration durable.
+              </p>
+            </section>
+
+            <section class="panel">
+              <h2>Ce que je recherche</h2>
+              <ul>
+                <li>Poste salarié (CDI/CDD) en transaction (ancien/neuf) ou polyvalent.</li>
+                <li>Formation &amp; accompagnement au démarrage (si besoin).</li>
+                <li>Secteur : Châteaubourg, Châteaugiron, Noyal, Acigné, Cesson, Vitré…</li>
+              </ul>
+              <p class="small2">
+                Disponible rapidement — horaires flexibles.
+              </p>
+            </section>
+          </div>
+          <div class="cta">
+            <a class="btn primary" href="mailto:castellier.gwenole@gmail.com">
+              Me contacter par email
+            </a>
+
+            <a class="btn" href="https://www.linkedin.com/in/gwenole-castellier/" target="_blank" rel="noreferrer">
+              Voir mon LinkedIn
+            </a>
+
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
